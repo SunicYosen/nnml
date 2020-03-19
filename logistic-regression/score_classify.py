@@ -12,12 +12,12 @@ from stochastic_gradient_ascent import stochastic_gradient_ascent
 from newton_method import newton_method
 
 def main():
-    max_iter_count          = 1000000
+    max_iter_count          = 10
     step_alpha              = 0.0001
     data_array, label_array = load_data("logistic_regression_data-1.txt")
     # theta, cost_v           = gradient_ascent(data_array, label_array, step_alpha, max_iter_count)
-    theta, cost_v           = stochastic_gradient_ascent(data_array, label_array, step_alpha, max_iter_count)
-    # theta, cost_v           = newton_method(data_array, label_array, max_iter_count=max_iter_count)
+    # theta, cost_v           = stochastic_gradient_ascent(data_array, label_array, step_alpha, max_iter_count)
+    theta, cost_v           = newton_method(data_array, label_array, max_iter_count=max_iter_count)
     print(theta)
     data_numbers            = np.shape(data_array)[0]
 
@@ -34,24 +34,26 @@ def main():
             data_x1_1.append(data_array[i][0])
             data_x2_1.append(data_array[i][1])
 
+    # Plot Result
     figure = plt.figure("Result")
-
     fig_plot = figure.add_subplot(111)
-    fig_plot.scatter(data_x1_0, data_x2_0, s=30, c='red', marker='s') # plot 0
-    fig_plot.scatter(data_x1_1, data_x2_1, s=30, c='green')
-
+    fig_plot.scatter(data_x1_0, data_x2_0, s=30, c='red', marker='s', label="No Pass") # plot 0
+    fig_plot.scatter(data_x1_1, data_x2_1, s=30, c='green', label="Pass")
     x = np.arange(0, 100, 1)
     y = (-theta[2,0] - theta[0,0] * x) / theta[1,0]
-
     fig_plot.plot(x,y)
+    plt.title("The Result of Classify")
+    plt.xlabel('Score 1')
+    plt.ylabel('Score 2')
 
-    plt.xlabel('x1')
-    plt.ylabel('x2')
-
+    # Plot Cost
     cost_fig  = plt.figure("Cost")
     cost_plot = cost_fig.add_subplot(111)
     epoches   = np.arange(0, max_iter_count+1, 1)
     cost_plot.plot(epoches, cost_v)
+    plt.title("The Cost of Classify")
+    plt.xlabel('Epoch')
+    plt.ylabel('Cost')
 
     plt.show()
 
