@@ -5,6 +5,7 @@ import numpy as np
 from functions import sigmoid
 from functions import gradient
 from functions import hessian_matrix
+from functions import cost_func
 
 #
 # newton method
@@ -12,24 +13,27 @@ from functions import hessian_matrix
 # label_mat: (1, m) m-data_numbers
 #
 
-def newton_method(data_array, label_array, max_iter_count = 500):
+def newton_method(data_array, label_array, max_iter_count):
     data_matrix  = np.mat(data_array)
     label_matrix = np.mat(label_array) #
 
     (m, n)  = np.shape(data_matrix)
 
-    weights = np.zeros((n,1), dtype=np.float128)    # Initial weights
+    theta = np.zeros((n,1))    # Initial theta
     
-    alpha   = 0.00001               # Step for gradient ascent
-    epoches = max_iter_count        # Times for Iteration
+    epoches = max_iter_count   # Times for Iteration
+
+    cost_vector = []
 
     for i in range(epoches):
-        h        = sigmoid(data_matrix * weights)
-        error    = label_matrix - h
-        g        = gradient(h, data_matrix, label_matrix)
-        hessian_m= hessian_matrix(h, data_matrix, label_matrix)
+        gradient_v       = gradient(theta, data_matrix, label_matrix)
+        hessian_mat      = hessian_matrix(theta, data_matrix, label_matrix)
+        cost_j           = cost_func(theta, data_matrix, label_matrix)
+        cost_vector.append(cost_j[0,0])
+        theta            = theta + (hessian_mat.I * gradient_v/m)
+    
+    cost_j           = cost_func(theta, data_matrix, label_matrix)
+    cost_vector.append(cost_j[0,0])
 
-        weights  = weights - (hessian_m.I * g.T)
-
-    return weights
+    return theta, cost_vector
 
