@@ -1,0 +1,4 @@
+#
+# Stochastic Gradient Desent
+# 
+
