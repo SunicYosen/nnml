@@ -4,7 +4,7 @@
 # Load data function
 # file_name: the data file name
 # 
-def load_data(file_name):
+def load_train_data(file_name):
 
     data_array  = []
     label_array = []
@@ -13,20 +13,39 @@ def load_data(file_name):
 
     for line in file_point.readlines():
         line_array = line.strip().split(' ')
-        data_array.append([float(line_array[0]), float(line_array[1]), 1.0])
+        temp_array = [1.0]
+        for index in range(len(line_array) - 1):
+            temp_array.append(float(line_array[index]))
+        data_array.append(temp_array)
         # Read area & bedrooms & Const
 
-        label_array.append([int(line_array[2])])
+        label_array.append([int(line_array[len(line_array) - 1])])
         # read price
 
     return data_array, label_array
+
+def load_test_data(file_name):
+
+    data_array  = []
+
+    file_point = open(file_name)
+
+    for line in file_point.readlines():
+        line_array = line.strip().split(' ')
+        temp_array = [1.0]
+        for index in range(len(line_array)):
+            temp_array.append(float(line_array[index]))
+        data_array.append(temp_array)
+        # Read area & bedrooms & Const
+
+    return data_array
 
 # 
 # Test load data function
 #
 def test_load_data():
 
-    data_array, label_array = load_data("data_train.txt")
+    data_array, label_array = load_train_data("data_train.txt")
 
     print(data_array)
     print(label_array)
