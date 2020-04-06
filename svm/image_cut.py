@@ -20,7 +20,7 @@ def image_cut(input_name, output_path, width, height, label_file):
     target_w = width
     target_h = height
 
-    label    = int(int(os.path.splitext(os.path.basename(file_name))[0]) > 12) # Add Train Label
+    label    = (float(int(os.path.splitext(os.path.basename(file_name))[0]) > 12) - 0.5 ) * 2 # Add Train Label
     label_f  = open(label_file, 'a')
 
     for w in range(int(origion_w / target_w)):

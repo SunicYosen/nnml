@@ -26,11 +26,11 @@ def load_data(image_path, label_file):
         if (os.path.splitext(file)[1] == '.jpg') | (os.path.splitext(file)[1] == '.bmp'):
             image_name  = os.path.basename(file)
             image_array = load_image(os.path.join(image_path, file))
-            image_label = [(float(label_dict[image_name]) - 0.5) * 2]
+            image_label = [float(label_dict[image_name])]
             data_array.append(image_array)
             label_array.append(image_label)
     
-    data_mat  = np.mat(data_array) / 255.0
+    data_mat  = (np.mat(data_array) - 128 )/128.0
     label_mat = np.mat(label_array)
     # print(np.shape(data_mat),np.shape(label_mat))
     return data_mat, label_mat
