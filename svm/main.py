@@ -14,8 +14,8 @@ def main():
     data_mat, label_mat = load_data("picture_256_256", "picture_256_256/label.txt")
     support_vector_data, support_vector_label, support_vector_alphas, b = \
         train(data_mat, label_mat, C=C, toler=toler, max_iter=max_iter, kernel_type=kernel_type)
-    print(support_vector_alphas)
-    print(support_vector_label)
+    #print(support_vector_alphas)
+    #print(support_vector_label)
     test_data_mat, test_label_ref = load_data("picture_256_256_test", "picture_256_256_test/label.txt")
     total_count, errot_count      = test(test_data_mat, test_label_ref, support_vector_data, support_vector_label, support_vector_alphas, b, kernel_type)
     return 0
