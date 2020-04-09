@@ -13,3 +13,7 @@ Home work programs for Neural Network & Machine Learning
 ## 3. 支持向量机 [Support Vector Machine](/svm)
 
 实现线性SVM模型、松弛SVM模型和非线性SVM模型
+
+## 4. 聚类 [Clustering](/clustering)
+
+实现K均值法和K中心点法
