@@ -19,4 +19,8 @@ def load_data(file_name):
 
 if __name__ == "__main__":
     data_array = load_data("data.txt")
+
+    for i in data_array:
+        print(i[1])
+
     print(data_array)
