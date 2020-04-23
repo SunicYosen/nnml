@@ -3,16 +3,17 @@
 import numpy as np
 from load_data import load_data
 from clustering import clustering
-from plot import plot_scatter_2d
 import matplotlib.pyplot as plt
 
 def main():
-    k = 2
+    k = 3
+    method = 'k_mediods'
+    # method = 'k_means'
     data_file  = "data.txt"
     data_array = load_data(data_file)
     data_mat   = np.mat(data_array)
 
-    cluster    = clustering(k=k, method='k_mediods')
+    cluster    = clustering(k=k, method=method)
     cluster.fit(data_mat)
 
     centroids  = cluster._centroids
@@ -39,8 +40,8 @@ def main():
         fig_plot.text(centroids[i,0], centroids[i,1], 'G', c=colors[i], fontdict={'weight': 'bold', 'size': 14})
 
     plt.title("The Result of Cluster")
-    plt.xlabel("Featrue 1")
-    plt.ylabel("Featrue 2")
+    plt.xlabel("Feature 1")
+    plt.ylabel("Feature 2")
 
     # Plot Error
     sse_fig  = plt.figure("SSE Curve")
