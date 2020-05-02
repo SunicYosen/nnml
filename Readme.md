@@ -17,3 +17,7 @@ Home work programs for Neural Network & Machine Learning
 ## 4. 聚类 [Clustering](/clustering)
 
 实现K均值法和K中心点法
+
+## 5. 决策树 [Decision Tree](/decision-tree)
+
+基于ID3算法构建决策树
