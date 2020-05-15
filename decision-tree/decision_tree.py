@@ -18,7 +18,7 @@ def info_entropy(data_set):
     entropy = float(0)
 
     for key in label_counts:
-        probability =  float(label_counts[key]) / counts
+        probability  = float(label_counts[key]) / counts
         entropy     -= probability * np.log2(probability)
 
     return entropy
