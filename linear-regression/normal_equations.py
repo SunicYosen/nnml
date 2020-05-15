@@ -1,7 +1,7 @@
 import numpy as np
 
 from functions import gradient
-from cost_fuction import cost_function
+from cost_function import cost_function
 
 def normal_quations(data_matrix, label_matrix):
     cost_vector   = []

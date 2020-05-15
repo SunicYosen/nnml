@@ -5,7 +5,7 @@
 import numpy as np
 
 from functions import gradient
-from cost_fuction import cost_function
+from cost_function import cost_function
 
 def gradient_descent(data_matrix, label_matrix, alpha, max_iter_numbers):
     step_alpha    = alpha
