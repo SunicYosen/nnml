@@ -13,14 +13,14 @@ def load_data(file_name):
 
     for line in file_point.readlines():
         line_array = line.strip().split(' ')
-        temp_array = [1.0]
+        temp_array = []
         for index in range(len(line_array) - 1):
             temp_array.append(float(line_array[index]))
         data_array.append(temp_array)
-        # Read area & bedrooms & Const
+        # Read area & bedrooms
 
         label_array.append([int(line_array[len(line_array) - 1])])
-        # read price
+        # Read Price
 
     return data_array, label_array
 
