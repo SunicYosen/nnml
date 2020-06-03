@@ -25,3 +25,7 @@ Home work programs for Neural Network & Machine Learning
 ## 6. 前馈神经网络 [Back Propagation](/back-propagation)
 
 BP神经网络实现
+
+## 7. 卷积是神经网络 [CNN](/cnn)
+
+卷积神经网络实现图片分类
