@@ -89,20 +89,20 @@ def run_cnn(classes=3, iters=6):
     fig_acc = figure.add_subplot(111)
     fig_acc.plot(history.history['accuracy'], marker=markers[0], c=colors[0])
     fig_acc.plot(history.history['val_accuracy'],  marker=markers[1], c=colors[1])
-    fig_acc.title('Model accuracy')
-    fig_acc.ylabel('accuracy')
-    fig_acc.xlabel('epoch')
-    fig_acc.legend(['train', 'test'], loc='upper left')
+    plt.title('Model accuracy')
+    plt.ylabel('accuracy')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'test'], loc='upper left')
 
     # Loss
     e_fig  = plt.figure("Loss Curve")
     e_plot = e_fig.add_subplot(111)
     e_plot.plot(history.history['loss'], marker=markers[0], c=colors[0])
     e_plot.plot(history.history['val_loss'], marker=markers[1], c=colors[1])
-    e_plot.title('Model loss')
-    e_plot.ylabel('loss')
-    e_plot.xlabel('epoch')
-    e_plot.legend(['train', 'test'], loc='upper right')
+    plt.title('Model loss')
+    plt.ylabel('loss')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'test'], loc='upper right')
     
     plt.show()
 
